@@ -20,12 +20,10 @@
 var irc = require('irc');		// Requires irc library
 var fs = require('fs');			// Requires fs library
 
-var config = require('./config'); // Test confinguration
-
 /*
  * Initiate connection with irc server
  */
-var client = new irc.Client(config.server, config.nick, {
+var client = new irc.Client('irc.kaotisk-hund.tk', 'torrejelp', {
 	channels: [
 		'#torrents'
 	],
@@ -58,23 +56,21 @@ function saveIH(infoHash){
 }
 
 /*
- * Log to conversations to console, also some mplaaaaaaaaaaa
+ * Handles message, data
  */
 client.addListener('message', function(from, to, message){
-	if (dbg) {console.log(from + ' -> ' + to + ': ' + message)};
 	packed = [from, to, message];
 	argarr = argumentor(message);
 	comsel(command);
 });
 
 /*
- * Output some logs, this is going to be a process utility
+ * Output array, this is a process utility
  * and renamed soon.
  */
  function argumentor(input){
  	argarr = argv_trans(input);
  	command = comex(argarr);
- 	if (dbg) {console.log('command: ' + command + ', 1st argument: ' + argarr[1])};
  	return argarr;
  }
 
