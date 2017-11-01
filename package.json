@@ -1,0 +1,19 @@
+{
+  "name": "mfib_my_first_irc_bot",
+  "version": "0.0.1",
+  "description": "IRC Bot for kaotisk-hund network",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "irc",
+    "bot",
+    "kaotisk-hund"
+  ],
+  "author": "kaotisk hund",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "irc": "^0.5.2"
+  }
+}
