@@ -55,6 +55,25 @@ client.addListener('message', function(from, to, message){
 });
 
 /*
+ * Adds a listener for every raw message so I can learn more about raw messages
+ *
+ * Targets: TOPIC, OP
+ *
+ */
+client.addListener('raw',function(message){
+	console.log('Prefix : ' + message.prefix + '\n' +
+		'| Nick : ' + message.nick +  '\n' +
+		'| User : ' + message.user +  '\n' +
+		'| Host : ' + message.host +  '\n' +
+		'| Serv : ' + message.server +  '\n' +
+		'| RaCo : ' + message.rawCommand +  '\n' +
+		'| Comm : ' + message.command +  '\n' +
+		'| CoTy : ' + message.commandType +  '\n' +
+		'| Args : ' + message.args + '\n'
+	);
+});
+
+/*
  * Output some logs, this is going to be a process utility
  * and renamed soon.
  * TODO: Through a switch for console output logging.
