@@ -2,6 +2,9 @@
 
 It's a bot! Just a bot!
 
+## Small description
+This is an IRC bot for adding torrents' infoHashes to whitelist from a command !addtorrent.
+
 ## Clone
 ```bash
 git clone https://github.com/kaotisk-hund/torrent-bot.git
@@ -23,7 +26,7 @@ It joins irc.kaotisk-hund.tk and then #torrents channel.
 There... it waits!
 
 ### While in the same channel
-```
+```bash
 Usage:
 !addtorrent <infoHash>
 ```
