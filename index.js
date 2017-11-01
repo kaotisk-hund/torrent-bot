@@ -10,6 +10,7 @@
  *   ./bin/append_whitelist.sh.
  * 
  *  Check options around if you want to hack this.
+ *
  */
 
 
@@ -67,7 +68,6 @@ client.addListener('message', function(from, to, message){
 /*
  * Output some logs, this is going to be a process utility
  * and renamed soon.
- * TODO: Through a switch for console output logging.
  */
  function argumentor(input){
  	argarr = argv_trans(input);
