@@ -1,27 +1,28 @@
-#torrent-bot
+# torrent-bot
 
 It's a bot! Just a bot!
 
-##Clone:
+## Clone
 ```bash
 git clone https://github.com/kaotisk-hund/torrent-bot.git
 ```
 
-##Install:
+## Install
 
 ```bash
 npm install
 ```
 
-Start it:
+## Start it
 ```bash
 npm start
 ```
 
 It joins irc.kaotisk-hund.tk and then #torrents channel.
 
-There it waits!
+There... it waits!
 
+### While in the same channel
 Usage:
 !addtorrent <infoHash>
 
