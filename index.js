@@ -1,7 +1,15 @@
 /*
  *	This bot is made for use in Kaotisk Hund IRC Network
  *
- *	
+ *	This part is for creating a bot in #torrents channel
+ *  and make available a command for adding a infoHash
+ *  to a local file called ./whitelist.
+ *
+ *  In order to added the collected infoHashes to the
+ *  opentracker's whitelist, you need to run
+ *   ./bin/append_whitelist.sh.
+ * 
+ *  Check options around if you want to hack this.
  */
 
 
@@ -14,20 +22,11 @@ var fs = require('fs');			// Requires fs library
 /*
  * Initiate connection with irc server
  */
-var client = new irc.Client('irc.kaotisk-hund.tk', 'mfibot', {
+var client = new irc.Client('irc.kaotisk-hund.tk', 'torrehelp', {
 	channels: [
-		'#rethymno-meshnet',
-		'#cjdns',
-		'#forum',
-		'#general',
-		'#ipfs',
-		'#mail',
-		'#movies',
-		'#music',
-		'#radio',
 		'#torrents'
 	],
-	userName: 'mfibot',
+	userName: 'Torrent Helper',
 	realName: 'Max Fiddlestick Iscar'
 });
 
@@ -41,7 +40,7 @@ var packed;
 /*
  * Debug output switch.
  */
-var dbg = true;
+var dbg = false;
 
 /*
  * Whitelist save
@@ -66,30 +65,6 @@ client.addListener('message', function(from, to, message){
 });
 
 /*
- * Adds a listener for every raw message so I can learn more about raw messages
- *
- * Targets: TOPIC, OP
- *
- */
-client.addListener('raw',function(message){
-	if (dbg) {parserawmessage(message)};
-});
-
-// Not parse raw message, but print nicely to console.
-function parserawmessage(message){
-	console.log('{\n\tPrefix : ' + message.prefix + '\n' +
-		'\tNick : ' + message.nick +  '\n' +
-		'\tUser : ' + message.user +  '\n' +
-		'\tHost : ' + message.host +  '\n' +
-		'\tServ : ' + message.server +  '\n' +
-		'\tRaCo : ' + message.rawCommand +  '\n' +
-		'\tComm : ' + message.command +  '\n' +
-		'\tCoTy : ' + message.commandType +  '\n' +
-		'\tArgs : ' + message.args + '\n}'
-	);
-}
-
-/*
  * Output some logs, this is going to be a process utility
  * and renamed soon.
  * TODO: Through a switch for console output logging.
@@ -106,9 +81,6 @@ function parserawmessage(message){
  * At this moment, we manage routing here.
  */
 function comsel(command){
-	if(command === '!hibot'){
-    	client.say(packed[1], "Hi! I am a robot!");
-	}
 	if(command === '!addtorrent'){
 		var infoHash = argarr[1];
 		addtorrent(infoHash);
@@ -124,10 +96,9 @@ function addtorrent(infoHash = 0){
 		client.say(packed[1], "Usage: !addtorrent <infoHash>");
 	} else {
 		saveIH(infoHash);
-		client.say(packed[1], "Hi! I am a robot that added " + infoHash + " torrent!!");
+		client.say(packed[1], infoHash + " torrent added!!");
 	}
 }
-
 
 /*
  * Find the command [0]
@@ -145,20 +116,6 @@ function argv_trans(input){
 	var array = input.split(" ");
 	return array;
 }
-
-
-/*
- * TODO: Sets topics for basic channels
- */
-//client.send('message','#rethymno-meshnet','~~~ Rethymno Meshnet ~~~ Coverage! Soon bot will be added!');
-/*client.send('topic','#torrents','For adding a torrent /msg kaotisk <torrent title> <infoHash> | Tracker URL: udp://h.kaotisk-hund.tk:6969/announce');
-client.send('topic','#radio','Want to send out your signal? Wanna here some good tunes? Well, we have to make it work together!');
-client.send('topic','#mail','Wanna use email in hyperboria network? Ask here for an account!');
-client.send('topic','#ipfs','IPFS talk!');
-client.send('topic','#forum','Visit the forum at http://h.kaotisk-hund.tk/blog/index.php/forum/');
-client.send('topic','#cjdns','CJDNS connectivity, peering. Also, report problems regarding your cjdns configuration and such.');
-client.send('topic','#music','What\'s your music taste? What it feels like? Share freely!');
-client.send('topic','#general','Welcome to Kaotisk Hund IRC!!! Other channels of interest: #music , #torrents');*/
 
 /*
  * Logs errors to console
