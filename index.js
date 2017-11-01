@@ -1,4 +1,11 @@
 /*
+ *	This bot is made for use in Kaotisk Hund IRC Network
+ *
+ *	
+ */
+
+
+/*
  * Basic requirements
  */
 var irc = require('irc');		// Requires irc library
@@ -44,7 +51,7 @@ function saveIH(infoHash){
 	    if(err) {
     	    return console.log(err);
     	}
-    	console.log("The file was saved!");
+    	if (dbg) {console.log("The file was saved!")};
 	});
 }
 
@@ -52,11 +59,10 @@ function saveIH(infoHash){
  * Log to conversations to console, also some mplaaaaaaaaaaa
  */
 client.addListener('message', function(from, to, message){
-	console.log(from + ' -> ' + to + ': ' + message);
+	if (dbg) {console.log(from + ' -> ' + to + ': ' + message)};
 	packed = [from, to, message];
 	argarr = argumentor(message);
 	comsel(command);
-	// client.say(to,from +', infoHash ' + argv_trans(message) + ' added to whitelist! Thank you!');
 });
 
 /*
@@ -67,14 +73,7 @@ client.addListener('message', function(from, to, message){
  */
 client.addListener('raw',function(message){
 	if (dbg) {parserawmessage(message)};
-
 });
-
-client.addListener('join', function(message){
-	client.send('MODE', '#torrents', '+o', 'kaotisk');
-})
-
-
 
 // Not parse raw message, but print nicely to console.
 function parserawmessage(message){
@@ -98,7 +97,7 @@ function parserawmessage(message){
  function argumentor(input){
  	argarr = argv_trans(input);
  	command = comex(argarr);
- 	console.log('command: ' + command + ', 1st argument: ' + argarr[1]);
+ 	if (dbg) {console.log('command: ' + command + ', 1st argument: ' + argarr[1])};
  	return argarr;
  }
 
@@ -165,5 +164,5 @@ client.send('topic','#general','Welcome to Kaotisk Hund IRC!!! Other channels of
  * Logs errors to console
  */
 client.addListener('error', function(message) {
-    console.log('!!!! ERROR !!!!: ', message);
+    if (dbg) {console.log('!!!! ERROR !!!!: ', message)};
 });
