@@ -1,5 +1,5 @@
 {
-  "name": "mfib_my_first_irc_bot",
+  "name": "torrent-bot",
   "version": "0.0.1",
   "description": "IRC Bot for kaotisk-hund network",
   "main": "index.js",
