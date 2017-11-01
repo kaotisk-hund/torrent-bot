@@ -109,7 +109,6 @@ function argv_trans(input){
 	var array = input.split(" ");
 	return array;
 }
-client.send('/topic','#movies','Movies! Have you seen a nice one lately?');
 
 
 /*
