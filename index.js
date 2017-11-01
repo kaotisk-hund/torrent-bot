@@ -26,7 +26,7 @@ var client = new irc.Client('irc.kaotisk-hund.tk', 'torrehelp', {
 	channels: [
 		'#torrents'
 	],
-	userName: 'Torrent Helper',
+	userName: 'TorrentHelper',
 	realName: 'Max Fiddlestick Iscar'
 });
 
