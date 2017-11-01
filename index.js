@@ -25,11 +25,16 @@ var client = new irc.Client('irc.kaotisk-hund.tk', 'mfibot', {
 });
 
 /* 
- * Let some variables
+ * Introduce some variables
  */
 var command;
 var argarr;
 var packed;
+
+/*
+ * Debug output switch.
+ */
+var dbg = true;
 
 /*
  * Whitelist save
@@ -61,17 +66,29 @@ client.addListener('message', function(from, to, message){
  *
  */
 client.addListener('raw',function(message){
-	console.log('Prefix : ' + message.prefix + '\n' +
-		'| Nick : ' + message.nick +  '\n' +
-		'| User : ' + message.user +  '\n' +
-		'| Host : ' + message.host +  '\n' +
-		'| Serv : ' + message.server +  '\n' +
-		'| RaCo : ' + message.rawCommand +  '\n' +
-		'| Comm : ' + message.command +  '\n' +
-		'| CoTy : ' + message.commandType +  '\n' +
-		'| Args : ' + message.args + '\n'
-	);
+	if (dbg) {parserawmessage(message)};
+
 });
+
+client.addListener('join', function(message){
+	client.send('MODE', '#torrents', '+o', 'kaotisk');
+})
+
+
+
+// Not parse raw message, but print nicely to console.
+function parserawmessage(message){
+	console.log('{\n\tPrefix : ' + message.prefix + '\n' +
+		'\tNick : ' + message.nick +  '\n' +
+		'\tUser : ' + message.user +  '\n' +
+		'\tHost : ' + message.host +  '\n' +
+		'\tServ : ' + message.server +  '\n' +
+		'\tRaCo : ' + message.rawCommand +  '\n' +
+		'\tComm : ' + message.command +  '\n' +
+		'\tCoTy : ' + message.commandType +  '\n' +
+		'\tArgs : ' + message.args + '\n}'
+	);
+}
 
 /*
  * Output some logs, this is going to be a process utility
@@ -86,7 +103,8 @@ client.addListener('raw',function(message){
  }
 
 /*
- * Command select
+ * Command select.
+ * At this moment, we manage routing here.
  */
 function comsel(command){
 	if(command === '!hibot'){
@@ -147,5 +165,5 @@ client.send('topic','#general','Welcome to Kaotisk Hund IRC!!! Other channels of
  * Logs errors to console
  */
 client.addListener('error', function(message) {
-    console.log('error: ', message);
+    console.log('!!!! ERROR !!!!: ', message);
 });
