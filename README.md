@@ -23,8 +23,10 @@ It joins irc.kaotisk-hund.tk and then #torrents channel.
 There... it waits!
 
 ### While in the same channel
+```
 Usage:
 !addtorrent <infoHash>
+```
 
 This adds the infoHash to a file called ./whitelist. Now, if you run an opentracker server
 with whitelist mode on, then there is a file /var/opentracker/whitelist where your server
