@@ -20,10 +20,12 @@
 var irc = require('irc');		// Requires irc library
 var fs = require('fs');			// Requires fs library
 
+var config = require('./config'); // Test confinguration
+
 /*
  * Initiate connection with irc server
  */
-var client = new irc.Client('irc.kaotisk-hund.tk', 'torrehelp', {
+var client = new irc.Client(config.server, config.nick, {
 	channels: [
 		'#torrents'
 	],
