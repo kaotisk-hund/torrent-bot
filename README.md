@@ -33,7 +33,7 @@ Usage:
 
 This adds the infoHash to a file called ./whitelist. Now, if you run an opentracker server
 with whitelist mode on, then there is a file /var/opentracker/whitelist where your server
-stores it's whitelist.
+stores its whitelist.
 
 You can use ./bin/append_whitelist.sh to append the local generated whitelist from torrent-bot
 to the server's one. You can also use crontab to update the list in schedule.
