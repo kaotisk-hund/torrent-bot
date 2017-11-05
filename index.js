@@ -89,8 +89,8 @@ function comsel(command){
  * Add torrent!!!!
  * This is going to save the infoHash into a file.
  */
-function addtorrent(infoHash = 0){
-	if (infoHash === 0) {
+function addtorrent(infoHash){
+	if (infoHash === null) {
 		client.say(packed[1], "Usage: !addtorrent <infoHash>");
 	} else {
 		saveIH(infoHash);
