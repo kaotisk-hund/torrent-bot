@@ -21,7 +21,7 @@ npm install
 npm start
 ```
 
-It joins irc.kaotisk-hund.tk and then #torrents channel.
+It joins irc.kaotisk-hund.tk and then #torrents channel. You can edit the config object to get it connected wherever.
 
 There... it waits!
 
@@ -41,3 +41,10 @@ to the server's one. You can also use crontab to update the list in schedule.
 Something to know about torrent tracker whitelist feature:
 While you can easily and successfully update your whitelist, opentracker requires either restart
 or SIGHUP signal in order to read the refreshed list.
+
+```bash
+Usage:
+!pending
+```
+
+While there is a time where the added torrent hashes are not yet in the whitelist, waiting to be absorbed to the opentracker's whitelist, we can see with this command which hashes are not yet added to our "main" whitelist.
