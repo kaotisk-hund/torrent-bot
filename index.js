@@ -64,6 +64,18 @@ function saveIH(infoHash){
 }
 
 /*
+ * Show pending hashes
+ */
+function pendinWL(){
+  fs.readFile("./whitelist","UTF-8",function(err,data){
+    if(err) {
+      return console.log(err);
+    }
+    client.say(packed[1],"Pending hashes are:"+data);
+  });
+}
+
+/*
  * Handles message, data
  */
 client.addListener('message', function(from, to, message){
@@ -87,10 +99,13 @@ client.addListener('message', function(from, to, message){
  * At this moment, we manage routing here.
  */
 function comsel(command){
-	if(command === '!addtorrent'){
-		var infoHash = argarr[1];
-		addtorrent(infoHash);
-	}
+  if(command === '!addtorrent'){
+    var infoHash = argarr[1];
+    addtorrent(infoHash);
+  }
+  if(command === '!pending'){
+    pendinWL();
+  }
 }
 
 /*
