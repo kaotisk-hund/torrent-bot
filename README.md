@@ -3,7 +3,7 @@
 It's a bot! Just a bot!
 
 ## Small description
-This is an IRC bot for adding torrents' infoHashes to whitelist from a command !addtorrent.
+This is an IRC bot for adding torrents' infoHashes to opentracker's whitelist from any IRC channel you want to plant your bot.
 
 ## Clone
 ```bash
@@ -47,4 +47,4 @@ Usage:
 !pending
 ```
 
-While there is a time where the added torrent hashes are not yet in the whitelist, waiting to be absorbed to the opentracker's whitelist, we can see with this command which hashes are not yet added to our "main" whitelist.
+While there is a time where the added torrent hashes are not yet in the whitelist, waiting to be absorbed to the opentracker's whitelist, we can see with this command which hashes are not yet added to our opentracker's whitelist.
