@@ -8,6 +8,9 @@ cat whitelist >> /var/opentracker/whitelist
 # Empty local whitelist
 cat /dev/null > whitelist
 
+# Send SIGHUP signal to opentracker
+kill -n 1 `pgrep opentracker`
+
 # TODO: As it should be removing the list only
 # if the append to opentracker's one is successful.
 
