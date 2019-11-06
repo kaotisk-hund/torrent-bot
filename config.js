@@ -1,7 +1,10 @@
-exports.config = {
-	server,
-	nick
-};
-
-var server = 'irc.kaotisk-hund.tk';
-var nick = 'torrehelp';
+/*
+ * Configuration
+ */
+module.exports = {
+	ircServer : 'h.kaotisk-hund.tk',
+	nickname : 'torrejelp',
+	channels : ['#torrents'],
+	username : 'TorrentHelper',
+	realName: 'Kravl Oke Tanyaka'
+}

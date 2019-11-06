@@ -14,21 +14,11 @@
  */
 
 /*
- * Configuration
- */
-var config = {
-	ircServer : 'h.kaotisk-hund.tk',
-	nickname : 'torrejelp',
-	channels : ['#torrents'],
-	username : 'TorrentHelper',
-	realName: 'Kravl Oke Tanyaka'
-}
-
-/*
  * Basic requirements
  */
 var irc = require('irc');		// Requires irc library
 var fs = require('fs');			// Requires fs library
+var config = require('./config')// Requires configuration
 
 /*
  * Initiate connection with irc server
