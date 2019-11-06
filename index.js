@@ -13,6 +13,16 @@
  *
  */
 
+/*
+ * Configuration
+ */
+var config = {
+	ircServer : 'h.kaotisk-hund.tk',
+	nickname : 'torrejelp',
+	channels : ['#torrents'],
+	username : 'TorrentHelper',
+	realName: 'Kravl Oke Tanyaka'
+}
 
 /*
  * Basic requirements
@@ -23,12 +33,10 @@ var fs = require('fs');			// Requires fs library
 /*
  * Initiate connection with irc server
  */
-var client = new irc.Client('irc.kaotisk-hund.tk', 'torrejelp', {
-	channels: [
-		'#torrents'
-	],
-	userName: 'TorrentHelper',
-	realName: 'Max Fiddlestick Iscar'
+var client = new irc.Client(config.ircServer, config.nickname, {
+	channels: config.channels,
+	userName: config.username,
+	realName: config.realName
 });
 
 /* 
